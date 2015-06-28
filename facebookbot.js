@@ -11,8 +11,8 @@ function getUsage() {
     return "I'm a Facebook bot. I help you to communicate with your old Facebook friends through Telegram !\n"
 	+ " I will forward every of your FB messages. I will also forward your answers if you select to reply their messages.\n\n"
 	+ "Available commands:\n"
-	+ "/threadList - List the last converstion you had with your friends.\n"
-	+ "/cancel - Cancel the current command\n"
+	+ "/threadList - List the latest conversations you had with your friends.\n"
+	+ "/cancel - Cancel the current command.\n"
         + "\n\nMore Informations: https://github.com/Liryna/FacebookBot";
 }
 
