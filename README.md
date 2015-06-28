@@ -28,6 +28,12 @@ APP_TOKEN="the token of your bot that BotFather gave you"
 TELEGRAM_USER="Mario" APP_TOKEN="TOKEN" node facebookbot.js
 ```
 
+- Available commands to send to your bot:
+```
+/threadList - List the latest conversations you had with your friends.
+/cancel - Cancel the current command
+```
+
 ## Dependencies
 
 This bot use [Schmavery/facebook-chat-api](https://github.com/Schmavery/facebook-chat-api) and [depoio/node-telegram-bot](https://github.com/depoio/node-telegram-bot).
