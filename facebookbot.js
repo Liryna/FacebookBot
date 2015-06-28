@@ -8,12 +8,12 @@ var owner = {username: process.env.TELEGRAM_USER, chat_id: ''};
 var maxThreadNb = 10;
 
 function getUsage() {
-    return "I'm a Facebook bot. I help you to communicate with your old Facebook friends!\n"
-	+ "I will forward you every of your FB messages. If reply to your FB friend messages and I will send them to your friends.\n\n"
+    return "I'm a Facebook bot. I help you to communicate with your old Facebook friends through Telegram !\n"
+	+ " I will forward every of your FB messages. I will also forward your answers if you select to reply their messages.\n\n"
 	+ "Available commands:\n"
 	+ "/threadList - List the last converstion you had with your friends.\n"
 	+ "/cancel - Cancel the current command\n"
-        + "\n\nMore Information: ";
+        + "\n\nMore Informations: https://github.com/Liryna/FacebookBot";
 }
 
 var chat = new Array();
@@ -33,7 +33,7 @@ login("config.json", function(err, api) {
 	token: process.env.APP_TOKEN
     }).on('message', function (message) {
 	if (message.from.username != owner.username)
-	    bot.sendMessage({chat_id: message.chat.id, text: "you are not my owner! Go away !"});
+	    bot.sendMessage({chat_id: message.chat.id, text: "You are not my owner! Go away ! - https://github.com/Liryna/FacebookBot"});
 	else
 	{
 	    if (!!owner.chat_id)
