@@ -33,7 +33,7 @@ TELEGRAM_USER="Mario" APP_TOKEN="TOKEN" node facebookbot.js
 - Available commands to send to your bot:
 ```
 /threadList - List the latest conversations you had with your friends.
-/cancel - Cancel the current command
+/cancel - Cancel the current command.
 ```
 
 ## Dependencies

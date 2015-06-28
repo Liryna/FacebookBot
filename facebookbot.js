@@ -4,7 +4,7 @@ var login = require("facebook-chat-api");
 if(!process.env.TELEGRAM_USER || !process.env.APP_TOKEN)
     return console.log("Please define this env variables -- TELEGRAM_USER - APP_TOKEN");
 
-var owner = {username: process.env.TELEGRAM_USER, chat_id: ''};
+var owner = {username: process.env.TELEGRAM_USER, chat_id: undefined};
 var maxThreadNb = 10;
 
 function getUsage() {
@@ -33,10 +33,12 @@ login("config.json", function(err, api) {
 	token: process.env.APP_TOKEN
     }).on('message', function (message) {
 	if (message.from.username != owner.username)
-	    bot.sendMessage({chat_id: message.chat.id, text: "You are not my owner! Go away ! - https://github.com/Liryna/FacebookBot"});
+	    bot.sendMessage({chat_id: message.chat.id,
+			     text: "You are not my owner! Go away ! \n"
+			     + "- https://github.com/Liryna/FacebookBot"});
 	else
 	{
-	    if (!!owner.chat_id)
+	    if (owner.chat_id == undefined)
 		owner.chat_id = message.chat.id; //save owner chat id - TODO save in config file
 	    
 	    if (!!message.reply_to_message
@@ -125,10 +127,9 @@ login("config.json", function(err, api) {
     //listen message from FB and forward to telegram
     api.listen(function callback(err, message) {
 	
-	console.log(message);
-	
 	var forwardmsg = message.sender_name + ": " + message.body;
-	if (!!owner.chat_id)
+
+	if (owner.chat_id)
             bot.sendMessage({chat_id: owner.chat_id, text: forwardmsg}, function(err, res) {
 		if(err) return console.error(err);
 		
