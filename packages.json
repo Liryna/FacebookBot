@@ -1,0 +1,21 @@
+{
+    "name": "facebookbot",
+    "version": "0.1.0",
+    "description": "Facebook chat adapter for Telegram",
+    "main": "./src/facebook",
+    "author": "Liryna <liryna.stark@gmail.com>",
+    "license": "MIT",
+    "repository": {
+	"type": "git",
+	"url": "git+https://github.com/Liryna/FacebookBot.git"
+    },
+    "bugs": {
+	"url": "https://github.com/Liryna/FacebookBot/issues"
+    },
+    "homepage": "https://github.com/Liryna/FacebookBot",
+    "dependencies": {
+	"node-telegram-bot": "^0.0.14",
+	"facebook-chat-api": "^0.2.3"
+    },
+    "scripts": {}
+}
