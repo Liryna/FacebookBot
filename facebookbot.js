@@ -111,7 +111,8 @@ login("config.json", function(err, api) {
 					});
 		} else {
 		    bot.sendMessage({chat_id: message.chat.id,
-				     text: getUsage()},
+				     text: getUsage(),
+				     disable_web_page_preview : true},
 				    function(err, ret) {
 					if(err) return console.error(err);
 				    });
