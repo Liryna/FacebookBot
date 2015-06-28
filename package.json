@@ -1,8 +1,8 @@
 {
     "name": "facebookbot",
     "version": "0.1.0",
-    "description": "Facebook chat adapter for Telegram",
-    "main": "./src/facebook",
+    "description": "A Facebook bot for Telegram",
+    "main": "facebookbot",
     "author": "Liryna <liryna.stark@gmail.com>",
     "license": "MIT",
     "repository": {
