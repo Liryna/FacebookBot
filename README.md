@@ -1,7 +1,7 @@
 # FacebookBot
 A Facebook bot for Telegram.
 
-[![dependencies](https://img.shields.io/david/icecube45/facebookbot.svg?style=flat-square)](https://david-dm.org/icecube45/facebookbot)[![npm version](http://img.shields.io/npm/v/facebookbot.svg?style=flat-square)](https://www.npmjs.com/package/facebookbot)
+[![dependencies](https://img.shields.io/david/Liryna/facebookbot.svg?style=flat-square)](https://david-dm.org/Liryna/facebookbot)[![npm version](http://img.shields.io/npm/v/facebookbot.svg?style=flat-square)](https://www.npmjs.com/package/facebookbot)
 >I'm a Facebook bot. I help you to communicate with your old Facebook friends through Telegram ! I will forward every of your FB messages. I will also forward your answers if you select to reply their messages.
 
 ## Install
