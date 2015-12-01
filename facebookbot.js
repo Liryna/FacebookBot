@@ -14,7 +14,7 @@ function getUsage() {
 	+ "Available commands:\n"
 	+ "/threadList - List the latest conversations you had with your friends.\n"
 	+ "/cancel - Cancel the current command.\n"
-        + "\n\nMore Informations: ";
+        + "\n\nMore Informations: https://github.com/Liryna/FacebookBot";
 }
 
 var chat = new Array();
@@ -35,7 +35,8 @@ login({email: "EMAIL GOES HERE", password: "PASSWORD GOES HERE"}, function(err, 
     }).on('message', function (message) {
 	if (message.from.username != owner.username)
 	    bot.sendMessage({chat_id: message.chat.id,
-			     text: message.from.username+" "+owner.username});
+			      text: "You are not my owner! Go away ! \n"
+-			     + "- https://github.com/Liryna/FacebookBot"});
 	else
 	{
 	    if (owner.chat_id == undefined)
@@ -87,7 +88,7 @@ login({email: "EMAIL GOES HERE", password: "PASSWORD GOES HERE"}, function(err, 
                     if(message.photo != undefined){
                  	   bot.getFile({
                        	       file_id: message.photo[message.photo.length-1].file_id,
-                               dir: "/home/icecube45/FacebookBot"
+                               dir: "BOT DIRECTORY GOES HERE"
                            },function callback(err, arr){
                               api.sendMessage({attachment: fs.createReadStream(arr.destination)}, currentThreadId, function(err, api) {
                                         if(err) return console.error(err);
