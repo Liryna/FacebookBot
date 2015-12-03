@@ -1,3 +1,4 @@
+var fs = require('fs');
 var Bot = require('node-telegram-bot');
 var login = require("facebook-chat-api");
 
@@ -25,7 +26,7 @@ function reset() {
     threadListTmp = undefined;    
 }
 
-login("config.json", function(err, api) {
+login({email: "EMAIL GOES HERE", password: "PASSWORD GOES HERE"}, function(err, api) {
     if(err) return console.error(err);
 
     //listen telegram message
@@ -34,8 +35,8 @@ login("config.json", function(err, api) {
     }).on('message', function (message) {
 	if (message.from.username != owner.username)
 	    bot.sendMessage({chat_id: message.chat.id,
-			     text: "You are not my owner! Go away ! \n"
-			     + "- https://github.com/Liryna/FacebookBot"});
+			      text: "You are not my owner! Go away ! \n"
+-			     + "- https://github.com/Liryna/FacebookBot"});
 	else
 	{
 	    if (owner.chat_id == undefined)
@@ -83,16 +84,31 @@ login("config.json", function(err, api) {
 				    function(err, ret) {
 					if(err) return console.error(err);
 				    });
-		} else if (currentThreadId != undefined) { //send the message to the current recipient
-		    api.sendMessage(message.text,
+		} else if (currentThreadId != undefined) {
+                    if(message.photo != undefined){
+                 	   bot.getFile({
+                       	       file_id: message.photo[message.photo.length-1].file_id,
+                               dir: "BOT DIRECTORY GOES HERE"
+                           },function callback(err, arr){
+                              api.sendMessage({attachment: fs.createReadStream(arr.destination)}, currentThreadId, function(err, api) {
+                                        if(err) return console.error(err);
+                                        fs.unlink(arr.destination, function (err) {
+					   if (err) throw err;
+					});
+                                    });
+
+                           });
+                    }else{
+		           api.sendMessage(message.text,
 				    currentThreadId, function(err, api) {
 					if(err) return console.error(err);
 				    });
+                    }
 		} else if (threadListTmp != undefined) { //Check if owner have send a good recipient name
 		    currentThreadId = undefined;
 		    for (var x = 0; x < threadListTmp.length; x++) {
 			if (threadListTmp[x].name == message.text)
-			    currentThreadId = threadListTmp[x].thread_id;
+			    currentThreadId = threadListTmp[x].threadID;
 		    }
 		    
 		    if (currentThreadId != undefined)
@@ -127,14 +143,17 @@ login("config.json", function(err, api) {
     //listen message from FB and forward to telegram
     api.listen(function callback(err, message) {
 	
-	var forwardmsg = message.sender_name + ": " + message.body;
+	var forwardmsg = message.senderName + ": " + message.body;
+        if(message.participantNames.length > 1){
+                var forwardmsg = message.threadName +": "+ message.senderName + ": " + message.body;
+        }
 
 	if (owner.chat_id)
             bot.sendMessage({chat_id: owner.chat_id, text: forwardmsg}, function(err, res) {
 		if(err) return console.error(err);
 		
 		//save message id send and fb thread id for futur reply
-		chat[res.message_id] = message.thread_id;
+		chat[res.message_id] = message.threadID;
 	    })
 	else
 	    console.log("where are you my owner ?");	
