@@ -143,9 +143,9 @@ login({email: "EMAIL GOES HERE", password: "PASSWORD GOES HERE"}, function(err, 
     //listen message from FB and forward to telegram
     api.listen(function callback(err, message) {
 	
-	var forwardmsg = message.threadName +": "+ message.senderName + ": " + message.body;
-        if(message.attachments.length>0){
-           var forwardmsg =  message.threadName +": "+message.senderName + ": " + message.attachments[0].url;
+	var forwardmsg = message.senderName + ": " + message.body;
+        if(message.participantNames.length > 1){
+                var forwardmsg = message.threadName +": "+ message.senderName + ": " + message.body;
         }
 
 	if (owner.chat_id)
