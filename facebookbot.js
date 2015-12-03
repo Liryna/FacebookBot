@@ -90,7 +90,7 @@ login({email: config.email, password: config.password}, function(err, api) {
                     if(message.photo != undefined){
                  	   bot.getFile({
                        	       file_id: message.photo[message.photo.length-1].file_id,
-                               dir: config.dir;
+                               dir: config.dir
                            },function callback(err, arr){
                               api.sendMessage({attachment: fs.createReadStream(arr.destination)}, currentThreadId, function(err, api) {
                                         if(err) return console.error(err);
