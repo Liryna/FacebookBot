@@ -12,7 +12,7 @@ function getUsage() {
     return "I'm a Facebook bot. I help you to communicate with your old Facebook friends through Telegram !\n"
 	+ " I will forward every of your FB messages. I will also forward your answers if you select to reply their messages.\n\n"
 	+ "Available commands:\n"
-	+ "/threadList - List the latest conversations you had with your friends.\n"
+	+ "/threadlist - List the latest conversations you had with your friends.\n"
 	+ "/cancel - Cancel the current command.\n"
         + "\n\nMore Informations: https://github.com/Liryna/FacebookBot";
 }
@@ -37,7 +37,7 @@ login({email: config.email, password: config.password}, function(err, api) {
 	if (message.from.username != owner.username)
 	    bot.sendMessage({chat_id: message.chat.id,
 			      text: "You are not my owner! Go away ! \n"
--			     + "- https://github.com/Liryna/FacebookBot"});
+			     + "- https://github.com/Liryna/FacebookBot"});
 	else
 	{
 	    if (owner.chat_id == undefined)
@@ -52,7 +52,7 @@ login({email: config.email, password: config.password}, function(err, api) {
 				});
 	    } else {
 
-		if (message.text == "/threadList") {
+		if (message.text == "/threadlist") {
 		    api.getThreadList(0, maxThreadNb, function callback(err, arr) {
 
 			var ft = require('./lib/findThread');
