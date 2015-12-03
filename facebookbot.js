@@ -25,8 +25,9 @@ function reset() {
     currentThreadId = undefined;
     threadListTmp = undefined;    
 }
-
-login({email: "EMAIL GOES HERE", password: "PASSWORD GOES HERE"}, function(err, api) {
+var config;
+config = JSON.parse(fs.readFileSync('config.json','utf-8'));
+login({email: config.email, password: config.password}, function(err, api) {
     if(err) return console.error(err);
 
     //listen telegram message
