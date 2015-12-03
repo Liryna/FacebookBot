@@ -56,6 +56,7 @@ login({email: "EMAIL GOES HERE", password: "PASSWORD GOES HERE"}, function(err, 
 
 			var ft = require('./lib/findThread');
 			var fbids = ft.getParticipantsIds(arr);
+			currentThreadId = undefined; //reset current thread
 			
 			api.getUserInfo(fbids, function(err, ret) {
 			    if(err) return console.error(err);
