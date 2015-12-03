@@ -25,8 +25,9 @@ function reset() {
     currentThreadId = undefined;
     threadListTmp = undefined;    
 }
-
-login({email: "EMAIL GOES HERE", password: "PASSWORD GOES HERE"}, function(err, api) {
+var config;
+config = JSON.parse(fs.readFileSync('config.json','utf-8'));
+login({email: config.email, password: config.password}, function(err, api) {
     if(err) return console.error(err);
 
     //listen telegram message
@@ -89,7 +90,7 @@ login({email: "EMAIL GOES HERE", password: "PASSWORD GOES HERE"}, function(err, 
                     if(message.photo != undefined){
                  	   bot.getFile({
                        	       file_id: message.photo[message.photo.length-1].file_id,
-                               dir: "BOT DIRECTORY GOES HERE"
+                               dir: config.dir;
                            },function callback(err, arr){
                               api.sendMessage({attachment: fs.createReadStream(arr.destination)}, currentThreadId, function(err, api) {
                                         if(err) return console.error(err);
