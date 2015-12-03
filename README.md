@@ -12,12 +12,13 @@ git clone https://github.com/Liryna/FacebookBot.git
 cd FacebookBot
 npm install
 ```
-- Create the configuration file "config.json".
+- Open the file `facebookbot.js` and fill it with your informations:
 ```
-{
-  "email": "YOUR EMAIL",
-  "password": "YOUR PASSWORD"
-}
+login({email: "EMAIL GOES HERE", password: "PASSWORD GOES HERE"}, function(err, api) {
+...
+
+file_id: message.photo[message.photo.length-1].file_id,
+dir: "BOT DIRECTORY GOES HERE"
 ```
 ##Usage
 - This bot require some additional information in the your environment variables.
