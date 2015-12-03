@@ -33,7 +33,7 @@ TELEGRAM_USER="Mario" APP_TOKEN="TOKEN" node facebookbot.js
 - The bot cannot establish a conversation to you directly, you need to write him first. Use your Telegram Client to say him "Hello".
 - The Available commands to send to your bot:
 ```
-/threadList - List the latest conversations you had with your friends.
+/threadlist - List the latest conversations you had with your friends.
 /cancel - Cancel the current command.
 ```
 
