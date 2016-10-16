@@ -16,7 +16,7 @@ npm install
 ```
 {
   "email": "YOUR EMAIL",
-  "password": "YOUR PASSWORD"
+  "password": "YOUR PASSWORD",
   "dir": "FacebookBot DIRECTORY"
 }
 ```
